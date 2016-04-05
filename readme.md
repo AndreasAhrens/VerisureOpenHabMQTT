@@ -15,6 +15,7 @@ Add files from images folder to your openHAB home, webapps, images folder
 Set up two cron jobs that run your connections to Verisure (see https://www.raspberrypi.org/documentation/linux/usage/cron.md on installation)
 
 My example crontab jobs:
+
 */5 * * * * node /usr/share/openhab/configurations/scripts/verisure-alarm.js | mosquitto_pub -d -t /hemgatan/veri$
 
 0 */1 * * * node /usr/share/openhab/configurations/scripts/verisure-climate.js | mosquitto_pub -d -t /hemgatan/ve$
