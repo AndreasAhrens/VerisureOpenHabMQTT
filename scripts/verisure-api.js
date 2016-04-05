@@ -3,6 +3,14 @@
  */
 
 
+/*
+
+	Original created by suhajdab
+	https://github.com/suhajdab/verisure-api
+	Simply modified by me to include alarm name
+
+*/
+
 
 var request = require('request');
 // ES6 object cloning
