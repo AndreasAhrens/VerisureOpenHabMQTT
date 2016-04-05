@@ -1,0 +1,29 @@
+Group All
+Group groupGF       (All)
+Group groupFF       (All)
+Group groupC        (All)
+Group Outside   (All)
+Group Shutters  (All)
+Group Weather   (All)
+Group Status    (All)
+
+
+
+/* active groups */
+Group:Number:AVG 				persist_temperature	"Avg. Room Temperature [%.1f °C]" 	<temperature>	(Status)
+Group:Number:AVG 				persist_humidities	"Avg. Room Humidity [%.1f %%]" 	<water>	(Status)
+
+
+/* Indoor Temperatures */
+
+
+String verisure_climate "Verisure climate data" <w> (other, persist_everychange) {mqtt="<[mosquitto:/hemgatan/verisure/climate:state:default]"}
+Number verisure_temperature_kitchen "Kök Verisure temperature [%.1f°C]" <temperature> (groupGF, persist_temperature, GF_Kitchen)
+Number verisure_temperature_ovanvaning "Ovanvåning Verisure temperature [%.1f°C]" <temperature> (groupFF, persist_temperature, FF_Hallway)
+Number verisure_temperature_vardagsrum "Vardagsrum Verisure temperature [%.1f°C]" <temperature> (groupGF, persist_temperature, GF_Living)
+
+Number verisure_humidity_ovanvaning "Ovanvåning Verisure humidity [%.1f %%]" <water> (groupFF, persist_humidities, FF_Hallway)
+Number verisure_humidity_vardagsrum "Vardagsrum Verisure humidity [%.1f %%]" <water> (groupGF, persist_humidities, GF_Living)
+
+
+String verisure_mtqq "Verisure alarm status [MAP(verisure-alarm.map):%s]"  <verisure> (sensors_alarm, persist_everychange) {mqtt="<[mosquitto:/hemgatan/verisure/status:state:JSONPATH($.status)]"}

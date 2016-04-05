@@ -1,0 +1,29 @@
+rule "Set verisure climate items"
+when Item verisure_climate received update
+then
+
+var String temp_string = transform("JSONPATH", "$.[?(@.location=='Kök')][0].temperature", verisure_climate.state.toString())
+var String[] temperature = temp_string.split('&')
+postUpdate(verisure_temperature_kitchen, temperature.get(0).replace(',', '.'))
+
+temp_string = transform("JSONPATH", "$.[?(@.location=='Ovanvåning')][0].temperature", verisure_climate.state.toString())
+temperature = temp_string.split('&')
+postUpdate(verisure_temperature_ovanvaning, temperature.get(0).replace(',', '.'))
+
+temp_string = transform("JSONPATH", "$.[?(@.location=='Vardagsrum')][0].temperature", verisure_climate.state.toString())
+temperature = temp_string.split('&')
+postUpdate(verisure_temperature_vardagsrum, temperature.get(0).replace(',', '.'))
+
+
+
+
+
+temp_string = transform("JSONPATH", "$.[?(@.location=='Vardagsrum')][0].humidity", verisure_climate.state.toString())
+var String[] humidity = temp_string.split('%')
+postUpdate(verisure_humidity_vardagsrum, humidity.get(0).replace(',', '.'))
+
+temp_string = transform("JSONPATH", "$.[?(@.location=='Ovanvåning')][0].humidity", verisure_climate.state.toString())
+humidity = temp_string.split('%')
+postUpdate(verisure_humidity_ovanvaning, humidity.get(0).replace(',', '.'))
+
+end

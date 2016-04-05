@@ -1,0 +1,16 @@
+sitemap default label="Verisure Test"
+{
+    Frame {
+        Group item=groupFF label="First Floor" icon="firstfloor"
+        Group item=groupGF label="Ground Floor" icon="groundfloor"
+        Group item=groupC label="Cellar" icon="cellar"
+        Group item=Outside icon="garden"
+    }
+    Frame label="Alarm" {
+    Text item=verisure_mtqq  
+    }
+   Frame label="Climate" {
+            Group item=persist_temperature
+            Group item=persist_humidities
+    }
+}
