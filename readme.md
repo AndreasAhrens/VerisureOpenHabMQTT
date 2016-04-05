@@ -16,9 +16,9 @@ Set up two cron jobs that run your connections to Verisure (see https://www.rasp
 
 My example crontab jobs:
 
-*/5 * * * * node /usr/share/openhab/configurations/scripts/verisure-alarm.js | mosquitto_pub -d -t /hemgatan/verisure/status -s
+*/5 * * * * node /usr/share/openhab/configurations/scripts/verisure-alarm.js | mosquitto_pub -d -t /myhome/verisure/status -s
 
-0 */1 * * * node /usr/share/openhab/configurations/scripts/verisure-climate.js | mosquitto_pub -d -t /hemgatan/verisure/climate -s
+0 */1 * * * node /usr/share/openhab/configurations/scripts/verisure-climate.js | mosquitto_pub -d -t /myhome/verisure/climate -s
 
 
 This will run verisure alarm every 5 minutes and verisure climate every one hour
